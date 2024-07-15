@@ -4,9 +4,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 
-const string GetGameEndpointName= "GetGame";
+const string GetGameEndpointName = "GetGame";
 
-List<GameDto> games =[
+List<GameDto> games = [
 new(1,
         "Genshin Impact",
         "RPG",
@@ -17,7 +17,7 @@ new(1,
         "Action",
         1500.01M,
         new DateOnly(2017,2,28)),
-        new(1,
+        new(3,
         "FIFA 23",
         "Sports",
         55.99M,
@@ -26,18 +26,18 @@ new(1,
 
 
 //GET /games
-app.MapGet("games",() =>games);
+app.MapGet("games", () => games);
 
 //GET /games/1
-app.MapGet("games/{id}",(int id) => games.Find(game =>game.Id == id))
+app.MapGet("games/{id}", (int id) => games.Find(game => game.Id == id))
 .WithName(GetGameEndpointName); // withname is used to defined an endpoint
 
 //POST /games
-app.MapPost("games",(CreateGameDto newGame) =>
+app.MapPost("games", (CreateGameDto newGame) =>
 {
     //Add game to GameDto so game variable has been initialised
-    GameDto game= new (
-        games.Count+1,
+    GameDto game = new(
+        games.Count + 1,
         newGame.Name,
         newGame.Genre,
         newGame.Price,
@@ -47,8 +47,27 @@ app.MapPost("games",(CreateGameDto newGame) =>
     games.Add(game);
 
     //Return whether the game data has been created or not
-    return Results.CreatedAtRoute(GetGameEndpointName,new {id = game.Id},game);
-    
+    return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game);
+
+});
+
+//PUT /Games
+app.MapPut("games/{id}", (int id, UpdateGameDTO updatedGame) =>
+{
+    //find existing game and then replace the game with the new
+    //finding the index of the game
+    var index = games.FindIndex(game => game.Id == id);
+
+    //updating the game]
+    games[index] = new GameDto(
+        id,
+        updatedGame.Name,
+        updatedGame.Genre,
+        updatedGame.Price,
+        updatedGame.ReleaseDate
+    );
+
+    return Results.NoContent();//for output operation
 });
 
 app.Run();

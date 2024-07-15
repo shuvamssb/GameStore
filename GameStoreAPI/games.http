@@ -14,3 +14,14 @@ Content-Type: application/json
        "price": 20.22,
        "releaseDate": "2015-10-22"
 }
+
+###
+PUT http://localhost:5030/games/3
+Content-Type: application/json
+
+{
+       "name": "Spiderman",
+       "genre":"RPG",
+       "price": 145.22,
+       "releaseDate": "2020-10-22"
+}
