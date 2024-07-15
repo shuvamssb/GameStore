@@ -12,12 +12,12 @@ new(1,
         "RPG",
         109.99M,
         new DateOnly(2020,10,28)),
-        new(2,
+new(2,
         "RDR2",
         "Action",
         1500.01M,
         new DateOnly(2017,2,28)),
-        new(3,
+ new(3,
         "FIFA 23",
         "Sports",
         55.99M,
@@ -68,6 +68,16 @@ app.MapPut("games/{id}", (int id, UpdateGameDTO updatedGame) =>
     );
 
     return Results.NoContent();//for output operation
+});
+
+
+//DELETE /games/1
+app.MapDelete("games/{id}", (int id) => 
+{
+    games.RemoveAll(game=>game.Id == id);
+
+    
+ return Results.NoContent();//for output operation
 });
 
 app.Run();
