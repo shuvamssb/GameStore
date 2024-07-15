@@ -7,7 +7,7 @@ public static class GameEndpoints
 
     const string GetGameEndpointName = "GetGame";
 
-//modifier used is private
+    //modifier used is private
     private static readonly List<GameDto> games = [    
     new(1,
             "Genshin Impact",
@@ -26,13 +26,15 @@ public static class GameEndpoints
             new DateOnly(2023,4,23))
     ];
 
-    public static WebApplication MapGamesEndpoints(this WebApplication app)
+    public static RouteGroupBuilder MapGamesEndpoints(this WebApplication app)
     {
-                    //GET /games
-            app.MapGet("games", () => games);
+            var group = app.MapGroup("games");
+
+            //GET /games
+            group.MapGet("/", () => games);
 
             //GET /games/1
-            app.MapGet("games/{id}", (int id) =>
+            group.MapGet("/{id}", (int id) =>
             {
                 GameDto?  game=games.Find(game => game.Id == id);
 
@@ -41,7 +43,7 @@ public static class GameEndpoints
             .WithName(GetGameEndpointName); // withname is used to defined an endpoint
 
             //POST /games
-            app.MapPost("games", (CreateGameDto newGame) =>
+            group.MapPost("/", (CreateGameDto newGame) =>
             {
                 //Add game to GameDto so game variable has been initialised
                 GameDto game = new(
@@ -60,7 +62,7 @@ public static class GameEndpoints
             });
 
             //PUT /Games
-            app.MapPut("games/{id}", (int id, UpdateGameDTO updatedGame) =>
+            group.MapPut("{id}", (int id, UpdateGameDTO updatedGame) =>
             {
                 //find existing game and then replace the game with the new
                 //finding the index of the game
@@ -85,7 +87,7 @@ public static class GameEndpoints
 
 
             //DELETE /games/1
-            app.MapDelete("games/{id}", (int id) => 
+            group.MapDelete("/{id}", (int id) => 
             {
                 games.RemoveAll(game=>game.Id == id);
 
@@ -93,6 +95,6 @@ public static class GameEndpoints
             return Results.NoContent();//for output operation
             });
 
-            return app;
+            return group;
     }
 }
