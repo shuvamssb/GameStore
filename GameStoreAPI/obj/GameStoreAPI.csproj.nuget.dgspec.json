@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\GameStoreAPI.csproj": {}
+    "C:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\GameStoreAPI.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\GameStoreAPI.csproj": {
+    "C:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\GameStoreAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\GameStoreAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\GameStoreAPI.csproj",
         "projectName": "GameStoreAPI",
-        "projectPath": "c:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\GameStoreAPI.csproj",
+        "projectPath": "C:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\GameStoreAPI.csproj",
         "packagesPath": "C:\\Users\\Shuvam Suklabaidya\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\obj\\",
+        "outputPath": "C:\\Users\\Shuvam Suklabaidya\\Music\\.Net\\GameStore\\GameStoreAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Shuvam Suklabaidya\\AppData\\Roaming\\NuGet\\NuGet.Config",
